@@ -1,5 +1,5 @@
 FROM php:7.4.26-fpm
-MAINTAINER cnx7 "zysafe@live.cn"
+MAINTAINER tanghang "474352380@qq.com"
 
 # 设置时区
 ENV TZ=Asia/Shanghai
