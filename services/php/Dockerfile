@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.3-fpm
 MAINTAINER tanghang "474352380@qq.com"
 
 # 设置时区
@@ -6,9 +6,9 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 
-RUN echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main" > /etc/apt/sources.list \
-  && echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main" >> /etc/apt/sources.list \
-  && echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian-security/ buster/updates main" >> /etc/apt/sources.list
+RUN echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main" > /etc/apt/sources.list \
+  && echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main" >> /etc/apt/sources.list \
+  && echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian-security/ bookworm/updates main" >> /etc/apt/sources.list
 
 RUN sed -i 's/mirrors.aliyun.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
 RUN cat /etc/apt/sources.list
