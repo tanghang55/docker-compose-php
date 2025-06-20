@@ -6,9 +6,9 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 
-RUN echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm main" > /etc/apt/sources.list \
-  && echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bookworm-updates main" >> /etc/apt/sources.list \
-  && echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian-security/ bookworm/updates main" >> /etc/apt/sources.list
+RUN echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster  main" > /etc/apt/sources.list \
+  && echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main" >> /etc/apt/sources.list \
+  && echo "deb https://mirrors.tuna.tsinghua.edu.cn/debian-security/ buster/updates main" >> /etc/apt/sources.list
 
 RUN sed -i 's/mirrors.aliyun.com/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
 RUN cat /etc/apt/sources.list
@@ -25,10 +25,13 @@ RUN apt-get update  && apt-get install  -y \
         libwebp-dev \
         libjpeg-dev \
         libxml2-dev \
-		libssl-dev \
+		    libssl-dev \
         libzip-dev \
         librabbitmq-dev \
-        unzip
+        unzip \
+        libpq-dev \
+        unixodbc-dev \
+        unixodbc
 
 # 安装PHP核心拓展
 RUN docker-php-ext-configure gd --with-webp=/usr/include/webp --with-jpeg=/usr/include --with-freetype=/usr/include/freetype2/ \
@@ -39,7 +42,7 @@ RUN pecl install -o -f   redis \
     && docker-php-ext-enable   redis
 
 # 安装 Swoole
-RUN yes|pecl install -o -f swoole && docker-php-ext-enable swoole
+RUN printf '\n' |pecl install -o -f swoole && docker-php-ext-enable swoole
 
 
 # 安装 Composer

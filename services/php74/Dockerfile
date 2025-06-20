@@ -8,7 +8,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 
 
-RUN echo "deb https://mirrors.aliyun.com/debian/ buster main" > /etc/apt/sources.list \
+RUN echo "deb https://mirrors.aliyun.com/debian/ buster  main" > /etc/apt/sources.list \
   && echo "deb https://mirrors.aliyun.com/debian/ buster-updates main" >> /etc/apt/sources.list \
   && echo "deb https://mirrors.aliyun.com/debian-security/ buster/updates main" >> /etc/apt/sources.list
 
@@ -34,6 +34,9 @@ RUN apt-get update \
      zlib1g=1:1.2.11.dfsg-1+deb10u2 \
      zlib1g-dev=1:1.2.11.dfsg-1+deb10u2 \
      unzip \
+     libpq-dev \
+     unixodbc-dev \
+     unixodbc \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
@@ -47,7 +50,7 @@ RUN pecl install -o -f   redis \
     && docker-php-ext-enable   redis
 
 # 安装 Swoole
-RUN yes|pecl install -o -f swoole-4.8.13  && docker-php-ext-enable swoole
+RUN printf '\n'|pecl install -o -f swoole-4.8.13  && docker-php-ext-enable swoole
 
 
 # 安装 Composer

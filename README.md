@@ -53,8 +53,7 @@ Docker化PHP开发环境
   },
   "insecure-registries": [],
   "registry-mirrors": [
-    "https://1v2h7h6m.mirror.aliyuncs.com",
-    "https://registry.docker-cn.com"
+    "https://docker.xuanyuan.me"
   ]
 }
 ```
