@@ -10,7 +10,7 @@ Docker化PHP开发环境
 
 该环境集成了公司PHP研发的常用组件，包含：
 - Nginx 1.24
-- PHP 8.1 `包含 Swoole、Redis、Mongo、AMQP、Soap 等扩展及 Git、composer、vim 等常用工具`
+- PHP 8.3 `包含 Swoole、Redis、Mongo、AMQP、Soap 等扩展及 Git、composer、vim 等常用工具`
 - PHP 7.4 `包含 Swoole、Redis、Mongo、AMQP、Soap 等扩展及 Git、composer、vim 等常用工具`
 - Mysql 8.0
 - MongoDB 6.0
@@ -53,8 +53,7 @@ Docker化PHP开发环境
   },
   "insecure-registries": [],
   "registry-mirrors": [
-    "https://1v2h7h6m.mirror.aliyuncs.com",
-    "https://registry.docker-cn.com"
+    "https://docker.xuanyuan.me"
   ]
 }
 ```
